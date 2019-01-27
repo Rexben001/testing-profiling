@@ -2,6 +2,7 @@ import express from 'express';
 import Admin from '../controllers/adminController';
 
 
+
 const router = express.Router();
 
 router.get('/parties', Admin.getParties);
