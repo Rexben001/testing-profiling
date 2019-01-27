@@ -42,8 +42,9 @@
     "build": "babel server -d dist",
     "start": "npm run build &&  node dist/app.js",
     "start-dev": "nodemon --require @babel/register server/app.js",
-    "test": "nyc mocha --require @babel/register ./server/specs/**/*.js --timeout 10000 --exit",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc ./node_modules/.bin/mocha --timeout 100000 --require @babel/register --require @babel/polyfill server/test --exit || true",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
     "lint": "eslint server/ --fix",
     "docs": "./node_modules/.bin/jsdoc server/"
   },
