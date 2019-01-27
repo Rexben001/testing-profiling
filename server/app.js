@@ -1,0 +1,25 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+import router from './routes/route';
+
+
+const app = express();
+
+app.use(bodyParser.urlencoded({
+    extended: false,
+}));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => res.status(200).json({
+    success: true,
+    message: 'Politico Xpress',
+}));
+
+app.use('/api/v1', router);
+
+app.listen(process.env.PORT || 8080, () => {
+    console.log('Working');
+});
+
+
+export default app;
