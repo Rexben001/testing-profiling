@@ -1,5 +1,5 @@
 import chai from 'chai';
-import app from '../../app';
+import app from '../app';
 
 chai.should();
 
@@ -141,7 +141,6 @@ describe('GET /offices', () => {
         chai.request(app)
             .get('/api/v1/offices')
             .end((err, res) => {
-                console.log(res.body);
                 res.should.have.status(200);
                 res.body.data.should.be.a('Array');
                 res.body.data[0].type.should.equal('State');
