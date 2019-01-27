@@ -76,12 +76,10 @@ class Admin {
             singleParty.name = name;
             return res.status(200).json({
                 status: 200,
-                data: [
-                    {
-                        id: singleParty.party_id,
-                        name: singleParty.name
-                    }
-                ]
+                data: [{
+                    id: singleParty.party_id,
+                    name: singleParty.name
+                }]
             });
         } catch (error) {
             return res.status(400).json({
