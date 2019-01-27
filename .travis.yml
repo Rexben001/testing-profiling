@@ -25,8 +25,4 @@ after_success:
   - npm run coveralls
 
 notifications:
-<<<<<<< HEAD
   email: false
-=======
-  email: false
->>>>>>> first
