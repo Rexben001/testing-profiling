@@ -1,7 +1,6 @@
 
 language: node_js
 node_js:
-  - "iojs"
   - "10.13"
 
 env:
@@ -26,4 +25,8 @@ after_success:
   - npm run coveralls
 
 notifications:
+<<<<<<< HEAD
   email: false
+=======
+  email: false
+>>>>>>> first
