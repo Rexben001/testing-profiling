@@ -13,8 +13,7 @@ const user = [{
   phonenumber: '234567890',
   username: 'Rexben',
   registered: '12-12-12',
-  is_admin: false,
-  report: []
+  is_admin: false
 }];
 const party = [{
   party_id: 1,

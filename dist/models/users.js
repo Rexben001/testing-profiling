@@ -48,8 +48,28 @@ const users = async () => {
   });
 };
 
+const contest = async () => {
+  const contestTable = `
+    CREATE TABLE IF NOT EXISTS 
+    contests(
+      id SERIAL PRIMARY KEY,
+      office INTEGER NOT NULL,
+      user INTEGER NOT NULL,
+      party INTEGER NOT NULL,
+      qualification VARCHAR(128) NOT NULL,
+      UNIQUE(office, user)
+    );`;
+  await pool.query(contestTable).then(res => {
+    console.log('contest table created!: ', res);
+  }).catch(err => {
+    console.log('An error occured while creating contest table: ', err);
+    pool.end();
+  });
+};
+
 var _default = {
   pool,
-  users
+  users,
+  contest
 };
 exports.default = _default;

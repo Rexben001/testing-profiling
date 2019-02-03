@@ -8,8 +8,7 @@ const user = [
     phonenumber: '234567890',
     username: 'Rexben',
     registered: '12-12-12',
-    is_admin: false,
-    report: []
+    is_admin: false
   }
 ];
 
@@ -46,8 +45,7 @@ const vote = [
     vote_id: 1,
     createdOn: '10-10-10',
     createdBy: 1,
-    office: 1,
-    body: 'Displeasure in the result of the gubernutoral election in Lagos. I want to make a petition'
+    office: 1
   }
 ];
 

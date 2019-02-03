@@ -15,5 +15,6 @@ const router = _express.default.Router();
 
 router.post('/auth/signup', _userController.default.createUser);
 router.post('/auth/login', _userController.default.loginUser);
+router.post('/office/:user_id/register', _userController.default.userContest);
 var _default = router;
 exports.default = _default;

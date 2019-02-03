@@ -18,7 +18,8 @@ var _users = _interopRequireDefault(require("./models/users"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const {
-  users
+  users,
+  contest
 } = _users.default;
 const app = (0, _express.default)();
 app.use(_bodyParser.default.urlencoded({
@@ -28,6 +29,7 @@ app.use(_bodyParser.default.json());
 
 const createTable = async () => {
   await users();
+  await contest();
 };
 
 createTable();

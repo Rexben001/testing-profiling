@@ -4,7 +4,7 @@ import router from './routes/route';
 import router2 from './routes/route2';
 import UserDB from './models/users';
 
-const { users } = UserDB;
+const { users, office, party, candidate, vote, petition } = UserDB;
 
 const app = express();
 
@@ -15,6 +15,11 @@ app.use(bodyParser.json());
 
 const createTable = async () => {
   await users();
+  await office();
+  await party();
+  await candidate();
+  await vote();
+  await petition();
 };
 
 createTable();
