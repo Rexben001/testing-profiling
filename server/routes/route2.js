@@ -24,7 +24,7 @@ router.post('/offices', Admin.createOffice);
 router.get('/offices', Admin.getOffices);
 router.get('/offices/:office_id', Admin.getOffice);
 router.patch('/offices/:office_id', Admin.editOffice);
-router.get('/votes/:office_id', Admin.getTotalVotes);
+router.get('/office/:office_id/result', Admin.getAllResults);
 
 router.get('/users', Admin.getAllUsers);
 router.get('/petitions', Admin.getAllPetitions);

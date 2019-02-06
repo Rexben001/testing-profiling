@@ -16,12 +16,12 @@ class AdminController {
                 client.query(query, value, (error, result) => {
                     done();
                     if (error) {
-                        res.status(500).json({ status: 500, message: `An error occured while trying to create party, ${error}` });
+                        return res.status(500).json({ status: 500, message: `An error occured while trying to create party, ${error}` });
                     } else {
                         if (result.rowCount === 0) {
-                            res.status(500).json({ staus: 500, message: 'The party could not be saved' });
+                            return res.status(500).json({ staus: 500, message: 'The party could not be saved' });
                         }
-                        res.status(200).json({
+                        return res.status(200).json({
                             status: 200,
                             data: result.rows[0]
                         });
@@ -132,7 +132,7 @@ class AdminController {
             const id = Number(req.params.party_id);
             pool.connect((err, client, done) => {
                 if (err) throw err;
-                const query = `DELETE * FROM parties WHERE party_id=${id}`;
+                const query = `DELETE FROM parties WHERE party_id=${id}`;
                 client.query(query, (error, result) => {
                     done();
                     if (error) {
@@ -356,6 +356,31 @@ class AdminController {
                             data: result.rows
                         });
                     }
+                });
+            });
+        } catch (error) {
+            return res.status(400).json({
+                status: 400,
+                error
+            });
+        }
+    }
+
+    static getAllResults(req, res) {
+        try {
+            const id = Number(req.params.office_id);
+            pool.connect((err, client, done) => {
+                if (err) throw err; 
+                const query = `SELECT COUNT(votes.candidate) AS result, candidates.candidate_id, candidates.office FROM votes JOIN candidates ON candidates.candidate_id =votes.candidate  WHERE votes.candidate = candidates.candidate_id GROUP BY candidates.candidate_id, candidates.createdBy, candidates.office`;
+                client.query(query, (error, result) => {
+                    done();
+                    if (error || result.rowCount === 0) {
+                        return res.status(500).json({ staus: 500, message: 'Vote could not be fetched' });
+                    }
+                    return res.status(200).json({
+                        status: 200,
+                        data: result.rows
+                    });
                 });
             });
         } catch (error) {
